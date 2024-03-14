@@ -1,0 +1,79 @@
+/* Entire document */
+
+:root {
+    --green: #238F51;
+    --yellow: #FEC126;
+    --red: #F05D4D;
+}
+
+html {
+    background-color: #eaeaea;
+    color: #262626;
+}
+
+body {
+    max-width: 100%;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+/* header */
+
+.header-container {
+    width: 100%;
+    height: 3rem;
+    padding: 0 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    background: #262626;
+    color: #eaeaea;
+}
+
+.header-title {
+
+}
+
+.header-button {
+    border: none;
+    outline: none;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: #262626;
+    color: #eaeaea;
+    font-size: large;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 10px 0px #404040;
+}
+
+.header-time {
+    
+}
+
+/* reminder tiles */
+.reminder-tile {
+    
+}
+
+/* idle graphic */
+
+.idle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50%;
+}
+
+/* mobile tweaks */
+
+@media (max-width: 500px) {
+    .header-time {
+        display: none;
+    }
+}

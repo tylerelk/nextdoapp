@@ -1,0 +1,43 @@
+{
+    "categories": [
+        "Task",
+        "Appointment",
+        "Meeting",
+        "Social",
+        "Other"
+    ],
+    "status": {
+        "0": "Not Started",
+        "1": "In Progress",
+        "2": "Completed"
+    },
+    "priority": {
+        "0": "Low",
+        "1": "Medium",
+        "2": "High"
+    },
+    "reminders": [
+        {
+            "title": "Test Entry",
+            "status": "not started",
+            "duedate": "none",
+            "desc": "This is a test entry.",
+            "priority": "2",
+            "category": "Task",
+            "project": "Default"
+        },
+        {
+            "title": "Surfing",
+            "status": "not started",
+            "duedate": "03-17-2024",
+            "desc": "Take Russel to M&M Surf School in Seal Beach. Class is from 0800 - 1100",
+            "priority": "0",
+            "category": "Social",
+            "project": ""
+        }
+    ],
+    "projects": [
+        "Default",
+        "None"
+    ]
+}
