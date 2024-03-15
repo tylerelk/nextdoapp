@@ -1,4 +1,6 @@
 import DateTime from "./dateTime";
+import { openSideBar } from "./globals";
+import Sidebar from "./sidebar";
 
 const header = document.querySelector('header');
 
@@ -14,7 +16,6 @@ export default function Header() {
     dateTime.classList.add('header-time');
 
     dropdown.innerHTML = '<ion-icon name="menu-outline"></ion-icon>'
-    dropdown.setAttribute('data-open', 'false');
     title.innerHTML = "next<b>Do</b>";
     dateTime.innerHTML = `
         <p>Today is:</p>
@@ -25,14 +26,16 @@ export default function Header() {
 
     dropdown.addEventListener('click', () => {
         let changeTrue = () => {
-            dropdown.dataset.open = "true";
+            openSideBar.isOpen = true;
+            header.appendChild(Sidebar());
             dropdown.innerHTML = '<ion-icon name="arrow-down-outline"></ion-icon>'
         };
         let changeFalse = () => {
-            dropdown.dataset.open = 'false';
+            openSideBar.isOpen = false;
+            header.removeChild(document.querySelector('.sidebar-container'));
             dropdown.innerHTML = '<ion-icon name="menu-outline"></ion-icon>';
         }
-        dropdown.dataset.open == 'false' ? changeTrue() : changeFalse();
+        !openSideBar.isOpen ? changeTrue() : changeFalse();
     })
 
     container.appendChild(dropdown);

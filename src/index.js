@@ -9,12 +9,10 @@ const rootDiv = document.getElementById('rootDiv');
 export default rootDiv;
 
 function buildSite () {
-    const root = document.createElement('div');
-
     Header();
     ReminderList();
-
-    return root;
+    let list = document.getElementById('reminder-list').childNodes.length;
+    if (list <= 0) {NoReminders()};
 };
 
 rootDiv.appendChild(buildSite());

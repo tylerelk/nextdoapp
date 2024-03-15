@@ -56,6 +56,21 @@ body {
     
 }
 
+/* sidebar */
+.sidebar-container {
+    width: 20%;
+    height: 100vh;
+    background-color: #262626;
+    color: #eaeaea;
+    position: fixed;
+    left: 0;
+}
+
+.sidebar-container * {
+    margin: 0;
+    padding: 0;
+}
+
 /* reminder tiles */
 .reminder-tile {
     

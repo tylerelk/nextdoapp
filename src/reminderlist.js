@@ -6,6 +6,8 @@ export default function ReminderList(sort) {
     const reminders = Data["reminders"];
     const list = document.createElement('ul');
 
+    list.setAttribute('id', 'reminder-list');
+
     const priorityColor = {
         0: "#238F51",
         1: "#FEC126",
