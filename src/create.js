@@ -1,5 +1,6 @@
 import rootDiv from "./index";
 import Data from "./reminders.json";
+import ReminderList from "./reminderlist";
 
 export default function Create() {
   const priorities = Data["priority"];
@@ -96,7 +97,9 @@ export default function Create() {
         "category": type,
         "project": "none"
     });
-    console.log(Data['reminders']);
+    rootDiv.removeChild(form);
+    rootDiv.removeChild(document.querySelector('#reminder-list'));
+    ReminderList();
     e.preventDefault();
   })
 
