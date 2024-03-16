@@ -13,6 +13,7 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.json']
   },
+  devtool: "inline-source-map",
   module: {
     rules: [
       {

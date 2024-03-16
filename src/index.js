@@ -1,5 +1,6 @@
 import _ from "lodash";
 import "./styles.css";
+import Data from './reminders.json';
 
 import NoReminders from "./noreminders";
 import Header from "./header";
@@ -11,11 +12,12 @@ export default rootDiv;
 
 function buildSite () {
     Header();
-    ReminderList();
-    let list = document.getElementById('reminder-list').childNodes.length;
-    if (list <= 0) {NoReminders()};
-
     Footer();
+    if (Data["reminders"].length > 0) {
+        ReminderList();
+    } else {
+        NoReminders();
+    };
 };
 
 rootDiv.appendChild(buildSite());

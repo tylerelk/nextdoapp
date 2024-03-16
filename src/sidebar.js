@@ -1,3 +1,6 @@
+import Create from "./create";
+import rootDiv from ".";
+
 export default function Sidebar() {
     const newTitle = document.createElement('h2');
     const projTitle = document.createElement('h2');
@@ -25,6 +28,12 @@ export default function Sidebar() {
     sidebar.appendChild(btnAllProj)
     sidebar.appendChild(setTitle);
     sidebar.appendChild(btnSet);
+
+    btnNew.addEventListener ('click', (e) => {
+        console.log(e);
+        e.preventDefault();
+        rootDiv.appendChild(Create());
+    })
 
     return sidebar;
 }

@@ -1,21 +1,21 @@
 {
-    "categories": [
+    "type": [
         "Task",
         "Appointment",
         "Meeting",
         "Social",
         "Other"
     ],
-    "status": {
-        "0": "Not Started",
-        "1": "In Progress",
-        "2": "Completed"
-    },
-    "priority": {
-        "0": "Low",
-        "1": "Medium",
-        "2": "High"
-    },
+    "status": [
+        0,
+        1,
+        2
+    ],
+    "priority": [
+        0,
+        1,
+        2
+    ],
     "reminders": [
         {
             "title": "Test Entry",
