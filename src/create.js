@@ -1,4 +1,3 @@
-import CheckEntries from "./checkentries";
 import rootDiv from "./index";
 import ReminderList from "./reminderlist";
 
