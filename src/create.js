@@ -111,7 +111,7 @@ export default function Create() {
       priority: priorityColor(formPriority),
       category: formType,
       project: "none",
-      id: `${(reminders.length + 1)}-${formTitle}`
+      id: formTitle
     };
     reminders.push(newData);
     localStorage.setItem("reminders", JSON.stringify(reminders));

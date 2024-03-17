@@ -149,7 +149,7 @@ body {
     align-items: center;
 }
 
-.tile-open {
+.tile-open, .tile-delete {
     background-color: transparent;
     color: #262626;
     width: 2rem;
@@ -162,7 +162,7 @@ body {
     font-size: larger;
 }
 
-.tile-open:active {
+.tile-open:active, .tile-delete:active {
     background-color: #262626;
     color: #f0f0f0
 }
