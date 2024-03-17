@@ -1,23 +1,19 @@
 import _ from "lodash";
 import "./styles.css";
-import Data from './reminders.json';
 
-import NoReminders from "./noreminders";
+import InitializeStorage from "./initializestorage";
 import Header from "./header";
-import ReminderList from "./reminderlist";
 import Footer from "./footer";
+import CheckEntries from "./checkentries";
 
 const rootDiv = document.getElementById('rootDiv');
 export default rootDiv;
+InitializeStorage();
 
 function buildSite () {
+    CheckEntries();
     Header();
     Footer();
-    if (Data["reminders"].length > 0) {
-        ReminderList();
-    } else {
-        NoReminders();
-    };
 };
 
 rootDiv.appendChild(buildSite());

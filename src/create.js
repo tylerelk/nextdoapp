@@ -1,10 +1,12 @@
+import CheckEntries from "./checkentries";
 import rootDiv from "./index";
-import Data from "./reminders.json";
 import ReminderList from "./reminderlist";
 
 export default function Create() {
-  const priorities = Data["priority"];
-  const types = Data["type"];
+  const priorities = JSON.parse(localStorage.getItem("priority"));
+  const types = JSON.parse(localStorage.getItem("type"));
+  const reminders = JSON.parse(localStorage.getItem("reminders"));
+  console.log(reminders);
 
   function inputMaker(type, name, id) {
     let input = document.createElement("input");
@@ -32,17 +34,17 @@ export default function Create() {
       select.appendChild(thisOption);
     });
     return select;
-  };
+  }
   function labelMaker(forInput, value) {
-    let label = document.createElement('label');
-    label.setAttribute('for', forInput);
+    let label = document.createElement("label");
+    label.setAttribute("for", forInput);
     label.textContent = value;
     return label;
   }
 
-  const close = document.createElement('button');
+  const close = document.createElement("button");
   close.innerHTML = '<ion-icon name="close-outline"></ion-icon>';
-  close.addEventListener('click', (e) => {
+  close.addEventListener("click", (e) => {
     e.preventDefault();
     rootDiv.removeChild(form);
   });
@@ -59,13 +61,13 @@ export default function Create() {
     priorities
   );
   const inputType = selectMaker("type", "create-type", "create-form", types);
-  const labelTitle = labelMaker('create-title', 'Title:');
-  const labelDue = labelMaker('create-due', 'Due Date:');
-  const labelDesc = labelMaker('create-desc', 'Brief Description:');
-  const labelPriority = labelMaker('create-priority', 'Priority Level:');
-  const labelType = labelMaker('create-type', 'Type:');
+  const labelTitle = labelMaker("create-title", "Title:");
+  const labelDue = labelMaker("create-due", "Due Date:");
+  const labelDesc = labelMaker("create-desc", "Brief Description:");
+  const labelPriority = labelMaker("create-priority", "Priority Level:");
+  const labelType = labelMaker("create-type", "Type:");
 
-  const submit = inputMaker('submit', null, 'create-submit');
+  const submit = inputMaker("submit", null, "create-submit");
 
   form.appendChild(close);
   form.appendChild(labelTitle);
@@ -80,28 +82,40 @@ export default function Create() {
   form.appendChild(inputType);
   form.appendChild(submit);
 
-  submit.addEventListener('click', (e) => {
+  let priorityColor = (level) => {
+    switch (level) {
+      case "Low":
+        return 0;
+      case "Moderate":
+        return 1;
+      case "High":
+        return 2;
+    }
+  };
+
+  submit.addEventListener("click", (e) => {
+    e.preventDefault();
     let formData = new FormData(form);
     form.reset();
     let formValues = [];
     for (let entry of formData) {
-        formValues.push(entry[1]);
+      formValues.push(entry[1]);
+    }
+    let [formTitle, formDueDate, formDesc, formPriority, formType] = formValues;
+    let newData = {
+      title: formTitle,
+      status: "not started",
+      duedate: formDueDate,
+      desc: formDesc,
+      priority: priorityColor(formPriority),
+      category: formType,
+      project: "none",
     };
-    let [title, dueDate, desc, priority, type] = formValues;
-    Data['reminders'].push({
-        "title": title,
-        "status": "not started",
-        "duedate": dueDate,
-        "desc": desc,
-        "priority": priority,
-        "category": type,
-        "project": "none"
-    });
-    rootDiv.removeChild(form);
-    rootDiv.removeChild(document.querySelector('#reminder-list'));
+    reminders.push(newData);
+    localStorage.setItem("reminders", JSON.stringify(reminders));
+    rootDiv.removeChild(document.getElementById('reminder-list'));
     ReminderList();
-    e.preventDefault();
-  })
+  });
 
   return form;
 }

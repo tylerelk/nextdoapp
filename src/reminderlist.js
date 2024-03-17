@@ -1,25 +1,30 @@
 import rootDiv from ".";
-import Data from "./reminders.json";
 import Tile from "./tile";
 
 export default function ReminderList(sort) {
-    const reminders = Data["reminders"];
+    const reminders = JSON.parse(localStorage.getItem('reminders'));
     const list = document.createElement('ul');
 
     list.setAttribute('id', 'reminder-list');
 
-    const priorityColor = {
-        0: "#238F51",
-        1: "#FEC126",
-        2: "#F05D4D"
-    };
-
-    for (let entry in reminders) {
-        let {title, status, duedate, desc, category, project, priority} = reminders[entry];
-        let newTile = Tile(title, status, desc, duedate, category, project);
-        newTile.style.backgroundColor = `${priorityColor[priority]}`
-        list.appendChild(newTile);
+    const priorityColor = (priority) => {
+        switch(priority) {
+            case 0:
+                return "var(--green)";
+            case 1:
+                return "var(--yellow)";
+            case 2:
+                return "var(--red)";
+        }
     }
+
+    for (let reminder of Object.values(reminders)) {
+        let { title, due, desc, priority, cat, proj } = reminder;
+        let newTile = Tile(title, 0, desc, due, cat, proj);
+        newTile.style.backgroundColor = priorityColor(priority);
+        list.appendChild(newTile);
+        console.log(reminder);
+    };
 
     rootDiv.appendChild(list);
 }

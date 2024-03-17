@@ -30,7 +30,6 @@ export default function Sidebar() {
     sidebar.appendChild(btnSet);
 
     btnNew.addEventListener ('click', (e) => {
-        console.log(e);
         e.preventDefault();
         rootDiv.appendChild(Create());
     })
