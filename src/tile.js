@@ -1,4 +1,4 @@
-export default function Tile(tit, sta, det, due, cat, pro) {
+export default function Tile(tit, sta, det, due, cat, pro, id) {
     const tile = document.createElement('li');
     const title = document.createElement('h2');
     const details = document.createElement('p');
@@ -8,8 +8,29 @@ export default function Tile(tit, sta, det, due, cat, pro) {
     const category = document.createElement('h3');
     const topInfo = document.createElement('div');
     const bottomInfo = document.createElement('div');
+    const expand = document.createElement('button');
+    const titleButton = document.createElement('div');
+
+    expand.innerHTML = '<ion-icon name="chevron-expand-outline"></ion-icon>';
+    expand.classList.add('tile-open');
+
+    topInfo.classList.add('hide');
+    details.classList.add('hide');
+    bottomInfo.classList.add('hide');
+
+    expand.addEventListener('click', () => {
+        let otherElements = [
+            topInfo,
+            details,
+            bottomInfo
+        ];
+        otherElements.forEach(piece => {
+            piece.classList.toggle('hide');
+        })
+    })
 
     tile.classList.add('reminder-tile');
+    titleButton.classList.add('title-button-container');
 
     title.textContent = tit;
     details.innerHTML = `Details:<br>${det}`;
@@ -30,13 +51,21 @@ export default function Tile(tit, sta, det, due, cat, pro) {
     };
     status.textContent = getStatus();
 
-    topInfo.appendChild(title);
+    topInfo.classList.add('tile-top-info');
+    bottomInfo.classList.add('tile-bottom-info');
+  
     topInfo.appendChild(status);
     topInfo.appendChild(dueDate);
 
-    bottomInfo.appendChild(project);
+    titleButton.appendChild(title);
+    titleButton.appendChild(expand);
+
+    if (pro != "none") {
+      bottomInfo.appendChild(project);
+    }
     bottomInfo.appendChild(category);
 
+    tile.appendChild(titleButton)
     tile.appendChild(topInfo);
     tile.appendChild(details);
     tile.appendChild(bottomInfo);

@@ -19,8 +19,8 @@ export default function ReminderList(sort) {
     }
 
     for (let reminder of Object.values(reminders)) {
-        let { title, duedate, desc, priority, category, project } = reminder;
-        let newTile = Tile(title, 0, desc, duedate, category, project);
+        let { title, duedate, desc, priority, category, project, id } = reminder;
+        let newTile = Tile(title, 0, desc, duedate, category, project, id);
         newTile.style.backgroundColor = priorityColor(priority);
         list.appendChild(newTile);
     };

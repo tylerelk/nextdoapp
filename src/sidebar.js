@@ -12,6 +12,11 @@ export default function Sidebar() {
     const sidebar = document.createElement('div');
 
     sidebar.classList.add('sidebar-container');
+    sidebar.classList.add('hide');
+    btnNew.classList.add('sidebar-btn');
+    btnProj.classList.add('sidebar-btn');
+    btnAllProj.classList.add('sidebar-btn');
+    btnSet.classList.add('sidebar-btn');
 
     newTitle.textContent = 'New';
     projTitle.textContent = 'Project';
@@ -31,8 +36,8 @@ export default function Sidebar() {
 
     btnNew.addEventListener ('click', (e) => {
         e.preventDefault();
-        rootDiv.appendChild(Create());
+        sidebar.appendChild(Create());
     })
 
-    return sidebar;
+    rootDiv.appendChild(sidebar);
 }

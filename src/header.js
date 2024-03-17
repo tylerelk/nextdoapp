@@ -1,6 +1,4 @@
 import DateTime from "./dateTime";
-import { openSideBar } from "./globals";
-import Sidebar from "./sidebar";
 
 const header = document.querySelector('header');
 
@@ -25,17 +23,8 @@ export default function Header() {
     `;
 
     dropdown.addEventListener('click', () => {
-        let changeTrue = () => {
-            openSideBar.isOpen = true;
-            header.appendChild(Sidebar());
-            dropdown.innerHTML = '<ion-icon name="arrow-down-outline"></ion-icon>'
-        };
-        let changeFalse = () => {
-            openSideBar.isOpen = false;
-            header.removeChild(document.querySelector('.sidebar-container'));
-            dropdown.innerHTML = '<ion-icon name="menu-outline"></ion-icon>';
-        }
-        !openSideBar.isOpen ? changeTrue() : changeFalse();
+        let sidebar = document.querySelector('.sidebar-container');
+            sidebar.classList.toggle('hide');
     })
 
     container.appendChild(dropdown);

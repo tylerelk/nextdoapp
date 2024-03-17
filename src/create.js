@@ -1,11 +1,12 @@
 import rootDiv from "./index";
 import ReminderList from "./reminderlist";
+import Sidebar from "./sidebar";
+
 
 export default function Create() {
   const priorities = JSON.parse(localStorage.getItem("priority"));
   const types = JSON.parse(localStorage.getItem("type"));
   const reminders = JSON.parse(localStorage.getItem("reminders"));
-  console.log(reminders);
 
   function inputMaker(type, name, id) {
     let input = document.createElement("input");
@@ -45,7 +46,7 @@ export default function Create() {
   close.innerHTML = '<ion-icon name="close-outline"></ion-icon>';
   close.addEventListener("click", (e) => {
     e.preventDefault();
-    rootDiv.removeChild(form);
+    document.querySelector('.sidebar-container').removeChild(form);
   });
 
   const form = document.createElement("form");
@@ -67,6 +68,7 @@ export default function Create() {
   const labelType = labelMaker("create-type", "Type:");
 
   const submit = inputMaker("submit", null, "create-submit");
+  submit.classList.add('form-button');
 
   form.appendChild(close);
   form.appendChild(labelTitle);
@@ -109,10 +111,13 @@ export default function Create() {
       priority: priorityColor(formPriority),
       category: formType,
       project: "none",
+      id: `${(reminders.length + 1)}-${formTitle}`
     };
     reminders.push(newData);
     localStorage.setItem("reminders", JSON.stringify(reminders));
-    rootDiv.removeChild(document.getElementById('reminder-list'));
+    document.querySelector('.sidebar-container').classList.toggle('hide');
+    rootDiv.innerHTML = '';
+    Sidebar();
     ReminderList();
   });
 
