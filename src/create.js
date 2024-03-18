@@ -105,7 +105,7 @@ export default function Create() {
     let [formTitle, formDueDate, formDesc, formPriority, formType] = formValues;
     let newData = {
       title: formTitle,
-      status: "not started",
+      status: "Not Started",
       duedate: formDueDate,
       desc: formDesc,
       priority: priorityColor(formPriority),

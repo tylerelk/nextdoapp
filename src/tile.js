@@ -4,6 +4,8 @@ import ReminderList from "./reminderlist";
 import Sidebar from "./sidebar";
 
 export default function Tile(tit, sta, det, due, cat, pro, id) {
+    let reminders = JSON.parse(localStorage.getItem('reminders'));
+
     const tile = document.createElement('li');
     const title = document.createElement('h2');
     const details = document.createElement('p');
@@ -40,14 +42,29 @@ export default function Tile(tit, sta, det, due, cat, pro, id) {
     })
 
     deleteButton.addEventListener('click', () => {
-        let reminders = JSON.parse(localStorage.getItem('reminders'));
         let thisReminder = reminders.find(thisId => thisId.id === id);
         let newReminders = reminders.filter(entry => entry.id != thisReminder.id);
         localStorage.setItem('reminders', JSON.stringify(newReminders));
         rootDiv.innerHTML = '';
-        ReminderList();
         Sidebar();
         CheckEntries();
+    })
+
+    status.addEventListener('click', (e) => {
+        let thisReminder = reminders.find(thisId => thisId.id === id);
+        switch(e.target.textContent) {
+            case "Not Started":
+                e.target.textContent = "In Progress";
+                break;
+            case "In Progress":
+                e.target.textContent = "Completed";
+                break;
+            case "Completed":
+                e.target.textContent = "Not Started";
+                break;
+        };
+        thisReminder.status = e.target.textContent;
+        localStorage.setItem('reminders', JSON.stringify(reminders));
     })
 
     tile.classList.add('reminder-tile');
@@ -55,22 +72,10 @@ export default function Tile(tit, sta, det, due, cat, pro, id) {
 
     title.textContent = tit;
     details.innerHTML = `Details:<br>${det}`;
-    status.textContent = `Status: ${sta}`;
+    status.textContent = sta;
     dueDate.textContent = `Due: ${due}`;
     project.textContent = `Project: ${pro}`;
     category.textContent = cat;
-
-    function getStatus() {
-        switch(sta) {
-            case 0:
-                return 'Not Started';
-            case 1:
-                return 'In Progress';
-            case 2:
-                return 'Completed';
-        }
-    };
-    status.textContent = getStatus();
 
     topInfo.classList.add('tile-top-info');
     bottomInfo.classList.add('tile-bottom-info');
