@@ -86,7 +86,7 @@ export default function Tile(tit, sta, det, due, cat, pro, id) {
     titleButton.appendChild(title);
     titleButton.appendChild(expand);
 
-    if (pro != "none") {
+    if (pro != "None") {
       bottomInfo.appendChild(project);
     }
     bottomInfo.appendChild(category);

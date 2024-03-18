@@ -7,6 +7,7 @@ export default function Create() {
   const priorities = JSON.parse(localStorage.getItem("priority"));
   const types = JSON.parse(localStorage.getItem("type"));
   const reminders = JSON.parse(localStorage.getItem("reminders"));
+  const projects = JSON.parse(localStorage.getItem('projects'));
 
   function inputMaker(type, name, id) {
     let input = document.createElement("input");
@@ -54,6 +55,7 @@ export default function Create() {
   const inputTitle = inputMaker("text", "title", "create-title");
   const inputDue = inputMaker("date", "duedate", "create-due");
   const inputDesc = inputMaker("text", "desc", "create-desc");
+  const inputProject = selectMaker("project", "create-project", "create-form", projects);
   const inputPriority = selectMaker(
     "priority",
     "create-priority",
@@ -66,6 +68,8 @@ export default function Create() {
   const labelDesc = labelMaker("create-desc", "Brief Description:");
   const labelPriority = labelMaker("create-priority", "Priority Level:");
   const labelType = labelMaker("create-type", "Type:");
+  const labelProject = labelMaker("create-project", "Project:");
+  
 
   const submit = inputMaker("submit", null, "create-submit");
   submit.classList.add('form-button');
@@ -81,6 +85,8 @@ export default function Create() {
   form.appendChild(inputPriority);
   form.appendChild(labelType);
   form.appendChild(inputType);
+  form.appendChild(labelProject);
+  form.appendChild(inputProject);
   form.appendChild(submit);
 
   let priorityColor = (level) => {
@@ -102,7 +108,7 @@ export default function Create() {
     for (let entry of formData) {
       formValues.push(entry[1]);
     }
-    let [formTitle, formDueDate, formDesc, formPriority, formType] = formValues;
+    let [formTitle, formDueDate, formDesc, formPriority, formType, formProject] = formValues;
     let newData = {
       title: formTitle,
       status: "Not Started",
@@ -110,7 +116,7 @@ export default function Create() {
       desc: formDesc,
       priority: priorityColor(formPriority),
       category: formType,
-      project: "none",
+      project: formProject,
       id: formTitle
     };
     reminders.push(newData);

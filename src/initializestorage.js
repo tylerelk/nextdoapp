@@ -11,4 +11,7 @@ export default function InitializeStorage() {
   );
   localStorage.setItem("status", JSON.stringify([0, 1, 2]));
   localStorage.setItem("priority", JSON.stringify([0, 1, 2]));
+  if (!localStorage.getItem('projects')) {
+  localStorage.setItem('projects', JSON.stringify(["None"]))
+  };
 }
