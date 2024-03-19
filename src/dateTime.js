@@ -4,7 +4,7 @@ export default function DateTime(date, time) {
     const month = new Date().getMonth();
     const year = new Date().getFullYear();
     const hours = new Date().getHours();
-    const mins = new Date().getMinutes();
+    const mins = (new Date().getMinutes() < 10 ? '0' : '') + new Date().getMinutes()
 
     const months = {
         0: "January",

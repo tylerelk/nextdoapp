@@ -85,7 +85,14 @@ body {
 }
 
 .header-time {
-
+    position: fixed;
+    top: 4rem;
+    right: 2rem;
+    height: 20%;
+    border: 1px solid #262626;
+    border-radius: 10px;
+    text-align: right;
+    padding: 0 2rem;
 }
 
 /* sidebar */
@@ -305,10 +312,15 @@ form > button {
 
 /* mobile tweaks */
 
-@media (max-width: 500px) {
+@media (max-width: 770px) {
     .header-time {
         display: none;
     }
+}
+
+/* desktop settings */
+@media (min-width: 770px) {
+    
 }
 
 /* temp */

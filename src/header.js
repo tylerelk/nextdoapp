@@ -1,3 +1,4 @@
+import rootDiv from ".";
 import DateTime from "./dateTime";
 
 const header = document.querySelector('header');
@@ -33,7 +34,8 @@ export default function Header() {
 
     container.appendChild(dropdown);
     container.appendChild(title);
-    container.appendChild(dateTime);
+
+    rootDiv.appendChild(dateTime);
 
     header.appendChild(container);
 }
