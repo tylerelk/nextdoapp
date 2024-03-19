@@ -12,6 +12,7 @@ export default rootDiv;
 InitializeStorage();
 
 function buildSite () {
+    window.scrollTo(0, 0);
     CheckEntries();
     Header();
     Sidebar();

@@ -77,7 +77,7 @@ export default function Tile(tit, sta, det, due, cat, pro, id) {
     title.textContent = tit;
     details.innerHTML = `Details:<br>${det}`;
     status.textContent = sta;
-    dueDate.textContent = `Due: ${due}`;
+    dueDate.innerHTML = `Due: <br>${due}`;
     project.textContent = `Project: ${pro}`;
     category.textContent = cat;
 

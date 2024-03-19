@@ -8,8 +8,6 @@ export default function NoReminders () {
     palmTree.src = palm;
 
     container.classList.add('idle-container');
-    palmTree.setAttribute('style', "width: 40%");
-    palmTree.style.opacity = "40%";
     noReminders.textContent = 'Nothing to do next...';
 
     container.appendChild(palmTree);

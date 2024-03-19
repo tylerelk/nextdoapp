@@ -8,9 +8,15 @@ export default function EditProjects() {
 
   const renderList = (arr) =>
     arr.forEach((project) => {
+      if (project == 'None') {
+        let item = document.createElement("li");
+        item.innerHTML = `${project}`
+        projectList.appendChild(item);
+      } else {
       let item = document.createElement("li");
       item.innerHTML = `${project} <ion-icon name="trash-outline" class="trash-icon"></ion-icon>`;
       projectList.appendChild(item);
+    }
     });
 
   renderList(projects);

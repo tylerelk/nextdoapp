@@ -268,7 +268,7 @@ form > button {
 .project-list {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     padding-left: 0;
     margin: 0;
     gap: 1rem;
@@ -295,6 +295,8 @@ form > button {
 
 .idle-container > img {
     z-index: -1;
+    width: 40%;
+    opacity: 0.4;
 }
 
 /* footer */
@@ -320,7 +322,42 @@ form > button {
 
 /* desktop settings */
 @media (min-width: 770px) {
-    
+    .idle-container {
+        margin-top: 8rem;
+    }
+    .idle-container > img {
+        width: 20%;
+    }
+    form {
+        width: 60%;
+        right: -13rem;
+        top: 0;
+    }
+    #reminder-list {
+        width: 60%;
+        margin: 2rem auto;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .reminder-tile {
+        height: min-content;
+        width: 25%;
+        margin: 0;
+    }
+    .sort-container {
+        width: 50%;
+    }
+    .sidebar-container {
+        width: 15%;
+    }
+    .project-container {
+        width: 30%;
+        margin: 5rem auto;
+        justify-content: space-around;
+    }
 }
 
 /* temp */
