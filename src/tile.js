@@ -30,6 +30,10 @@ export default function Tile(tit, sta, det, due, cat, pro, id) {
     details.classList.add('hide');
     bottomInfo.classList.add('hide');
 
+    title.style.width = '75%';
+    title.style.padding = '0.5rem';
+    title.style.borderRadius = '10px'
+
     expand.addEventListener('click', () => {
         let otherElements = [
             topInfo,

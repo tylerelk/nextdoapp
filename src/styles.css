@@ -129,7 +129,6 @@ body {
 /* reminder tiles */
 #reminder-list {
     padding-left: 0;
-    padding-top: 2rem;
     padding-bottom: 2rem;
 }
 
@@ -175,6 +174,27 @@ body {
 
 .title-button-container > h2 {
     margin: 0;
+}
+
+/* Sorting */
+.sort-container {
+    width: 80%;
+    margin: auto;
+    margin-top: 5rem;
+    padding: 1rem;
+    border: 1px solid #262626;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.sort-button {
+    border: 1px solid #262626;
+    outline: none;
+    border-radius: 10px;
 }
 
 /* new input */

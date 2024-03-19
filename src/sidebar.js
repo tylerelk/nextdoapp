@@ -1,6 +1,7 @@
 import Create from "./create";
 import rootDiv from ".";
 import CreateProject from "./createproject";
+import EditProjects from "./editprojects";
 
 export default function Sidebar() {
     const newTitle = document.createElement('h2');
@@ -43,6 +44,13 @@ export default function Sidebar() {
     btnProj.addEventListener('click', (e) => {
         e.preventDefault();
         sidebar.appendChild(CreateProject());
+    })
+
+    btnAllProj.addEventListener('click', (e) => {
+        e.preventDefault();
+        rootDiv.innerHTML = '';
+        rootDiv.appendChild(EditProjects());
+        Sidebar();
     })
 
     rootDiv.appendChild(sidebar);
