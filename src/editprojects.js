@@ -1,13 +1,15 @@
 export default function EditProjects() {
+  const container = document.createElement('div');
   const projectList = document.createElement("ul");
   const projects = JSON.parse(localStorage.getItem("projects"));
 
-  projectList.style.marginTop = "5rem";
+  container.classList.add('project-container');
+  projectList.classList.add('project-list');
 
   const renderList = (arr) =>
     arr.forEach((project) => {
       let item = document.createElement("li");
-      item.innerHTML = `${project} <ion-icon name="trash-outline"></ion-icon>`;
+      item.innerHTML = `${project} <ion-icon name="trash-outline" class="trash-icon"></ion-icon>`;
       projectList.appendChild(item);
     });
 
@@ -22,5 +24,8 @@ export default function EditProjects() {
     });
   });
 
-  return projectList;
+  container.innerHTML = '<h2>Projects</h2>';
+  container.appendChild(projectList);
+
+  return container;
 }

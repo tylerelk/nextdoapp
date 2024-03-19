@@ -8,6 +8,10 @@ export default function Header() {
     const dropdown = document.createElement('button');
     const dateTime = document.createElement('div');
 
+    title.addEventListener('click', () => {
+        location.reload();
+    })
+
     container.classList.add('header-container');
     title.classList.add('header-title');
     dropdown.classList.add('header-button');

@@ -22,11 +22,16 @@ export default function Sidebar() {
 
     newTitle.textContent = 'New';
     projTitle.textContent = 'Project';
-    setTitle.textContent = 'Settings';
+    setTitle.textContent = 'Reset';
     btnNew.textContent = 'New Do';
     btnProj.textContent = 'New Project';
     btnAllProj.textContent = 'View All';
-    btnSet.textContent = 'Settings';
+    btnSet.textContent = 'Reset App';
+
+    btnSet.addEventListener('click', () => {
+        localStorage.clear();
+        location.reload();
+    })
 
     sidebar.appendChild(newTitle);
     sidebar.appendChild(btnNew);
